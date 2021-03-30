@@ -264,7 +264,8 @@ cfg.gpu_ids = range(1)
 
 cfg.optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 
-cfg.model.backbone['type'] = 'Custom_Backbone'
+if "Original" not in args.backbone:
+    cfg.model.backbone['type'] = 'Custom_Backbone'
 cfg.data['samples_per_gpu']= args.batch_size
 
 print(f'Config:\n{cfg.pretty_text}')
