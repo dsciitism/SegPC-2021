@@ -12,11 +12,7 @@ Installation of required packages:
 
 ## Configure and Run
 
-### A
 
-### B
-
-### C
 
 
 ## Citation
