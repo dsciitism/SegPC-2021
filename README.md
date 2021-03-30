@@ -1,1 +1,6 @@
 # SegPC-2021
+
+## Transformer Assisted Convolutional Neural Network for Cell Instance Segmentation
+
+Region proposal based methods like R-CNN and Faster R-CNN models have proven to be extremely successful in object detection and segmentation tasks.  Of late, Transformers have also gained popularity in the domain of Computer Vision, and are being utilised to improve the performance of conventional models.
+In this paper, we present a relatively new transformer based approach to enhance the performance of conventional convolutional feature extractors by merging them with transformer-based tokens embedding, by applying a projection operation similar to self-attention in transformers. Using a Vision Transformer(ViT) based transformer encoder along with the convolutional encoders, we managed to get a significant improvement in mIoU (mean Intersection over Union) scores compared to vanilla convolutional backbones. We finally create an ensemble of the vanilla and transformer-assisted variants of these networks to obtain an mIoU of 0.9356 in the validation phase and 0.9382 in the test phase of the SegPC-2021 Cell segmentation challenge, securing second and third positions in the two phases respectively.
