@@ -5,7 +5,7 @@ This is the official repository for the ISBI 2021 paper __Transformer Assisted C
 ## Getting Started
 We recommend using Python 3.7 for running the scripts in this repository. The necessary packages can be installed using _requirements.txt_.
 
-Install required packages using:
+Installation of required packages:
 
 ``` $ pip install -r requirements.txt ```
 
