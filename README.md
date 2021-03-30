@@ -10,7 +10,7 @@ Installation of required packages:
 ``` $ pip install -r requirements.txt ```
 
 
-## Configuration
+## Configure and Run
 
 ### A
 
