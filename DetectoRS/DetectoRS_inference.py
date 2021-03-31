@@ -2,24 +2,16 @@ import argparse
 
 args = argparse.ArgumentParser()
 args.add_argument('--backbone',type=str,required=True,choices=["Original","Effb5","Transformer_Effb5"],help="The backbone to be used from the given choices")
-args.add_argument('--train_data_root',type=str,required=True,help="path to training data root folder")
-args.add_argument('--training_json_path',type=str,required=True,help="path to the training json file in COCO format")
-args.add_argument('--train_img_prefix',type=str,help="prefix path ,if any, to be added to the train_data_root path to access the input images")
-args.add_argument('--train_seg_prefix',type=str,help="prefix path ,if any, to be added to the train_data_root path to access the semantic masks")
-args.add_argument('--val_data_root',type=str,required=True,help="path to validation data root folder")
-args.add_argument('--validation_json_path',type=str,required=True,help="path to validation json file in COCO format")
-args.add_argument('--val_img_prefix',type=str,help="prefix path ,if any, to be added to the val_data_root path to access the input images")
-args.add_argument('--val_seg_prefix',type=str,help="prefix path ,if any, to be added to the val_data_root path to access the semantic masks")
-args.add_argument('--work_dir',type=str,required=True,help="path to the folder where models and logs will be saved")
-args.add_argument('--epochs',type=int,default=100)
-args.add_argument('--batch_size',type=int,default=16)
+args.add_argument('--saved_model_path',type=str,required=True,help="path to the saved model which will be loaded")
+args.add_argument('--input_images_folder',type=str,required=True,help="path to the folder where images to inference on are kept")
+args.add_argument('--save_path',type=str,required=True,help="path to the folder where the generated masks will be saved")
 
 args = args.parse_args()
 
 import os
 
 if not os.path.exists("mmdetection/"):
-    raise Exception("training file is not in the same directory where mmdetection_preparation.py was run")
+    raise Exception("inference script is not in the same directory where mmdetection_preparation.sh was run")
 else :
     os.chdir("mmdetection/")
 
@@ -220,7 +212,6 @@ cfg = Config.fromfile('./configs/detectors/detectors_htc_r50_1x_coco.py')
 from mmdet.apis import set_random_seed
 
 cfg.dataset_type = 'CocoDataset'
-cfg.data_root = args.train_data_root
 
 cfg.model.roi_head.bbox_head[0].num_classes = 1
 cfg.model.roi_head.bbox_head[1].num_classes = 1
@@ -232,64 +223,44 @@ cfg.model.roi_head.semantic_head.num_classes = 1
 
 cfg.data.train.type = 'CocoDataset'
 cfg.data.train.classes = ['cell']
-cfg.data.train.data_root = args.train_data_root
-cfg.data.train.ann_file = args.training_json_path
-cfg.data.train.img_prefix = args.train_img_prefix
-cfg.data.train.seg_prefix = args.train_seg_prefix
-
 cfg.data.val.type = 'CocoDataset'
 cfg.data.val.classes = ['cell']
-cfg.data.val.data_root = args.val_data_root
-cfg.data.val.ann_file = args.validation_json_path
-cfg.data.val.img_prefix = args.val_img_prefix
-cfg.data.val.seg_prefix = args.val_seg_prefix
-
-cfg.load_from = 'http://download.openmmlab.com/mmdetection/v2.0/detectors/detectors_htc_r50_1x_coco/detectors_htc_r50_1x_coco-329b1453.pth'
-
-cfg.work_dir = args.work_dir
-
-cfg.optimizer.lr = 0.02/8
-cfg.lr_config.warmup = None
-cfg.log_config.interval = 10
-cfg.total_epochs = args.epochs
-cfg.runner['max_epochs'] = 100
-
-cfg.evaluation.metric = 'segm'
-cfg.evaluation.interval = 10
-cfg.checkpoint_config.interval = 1
-
-cfg.seed = 0
-set_random_seed(0, deterministic=False)
-cfg.gpu_ids = range(1)
-
-cfg.optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 
 if "Original" not in args.backbone:
     cfg.model.backbone['type'] = 'Custom_Backbone'
-cfg.data['samples_per_gpu']= args.batch_size
+cfg.data['samples_per_gpu']=1
+cfg.load_from = args.saved_model_path
 
-print(f'Config:\n{cfg.pretty_text}')
-
-from mmdet.datasets import build_dataset
-from mmdet.models import build_detector
-from mmdet.apis import train_detector
-
-
-# Build dataset
-datasets = [build_dataset(cfg.data.train)]
-
-
+from mmdet.apis import inference_detector, init_detector, show_result_pyplot
 import copy
 import os.path as osp
 
 import mmcv
 import numpy as np
 
+model = init_detector(cfg,cfg.load_from, device='cuda:0')
 
-# Build the detector
-model = build_detector(
-    cfg.model)#, train_cfg=cfg.model.train_cfg, test_cfg=cfg.model.test_cfg)
-model.CLASSES = ('cell')
+import matplotlib.image as img
+from mmdet.apis import inference_detector, init_detector, show_result_pyplot
+import os
+from tqdm import tqdm
+import glob
 
-mmcv.mkdir_or_exist(osp.abspath(cfg.work_dir))
-train_detector(model, datasets, cfg, distributed=False, validate=True)
+test_root = args.input_images_folder
+test_ids = os.listdir(test_root)
+model.cfg = cfg
+
+for it in tqdm(range(len(test_ids))):
+  id = test_ids[it]
+  image = mmcv.imread(test_root+"/"+id)
+  
+  result = inference_detector(model,image)
+  count = 1
+  
+  print(len(result[1][0]))
+
+  for i,mask in enumerate(result[1][0]):
+    if mask.sum()<500:
+      continue
+    img.imsave(args.save_path+"/"+id[:-4]+"_{}".format(count)+".bmp",mask)
+    count+=1
