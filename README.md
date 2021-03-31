@@ -31,7 +31,7 @@ For installation of required packages:
 
 The following flags need to be used while running DetectoRS_train.py:
 
-'''bash
+```bash
 
 usage: DetectoRS_train.py [-h] --backbone {Original,Effb5,Transformer_Effb5} --train_data_root TRAIN_DATA_ROOT --training_json_path TRAINING_JSON_PATH [--train_img_prefix TRAIN_IMG_PREFIX] [--train_seg_prefix TRAIN_SEG_PREFIX] --val_data_root VAL_DATA_ROOT --validation_json_path VALIDATION_JSON_PATH [--val_img_prefix VAL_IMG_PREFIX] [--val_seg_prefix VAL_SEG_PREFIX] --work_dir WORK_DIR [--epochs EPOCHS] [--batch_size BATCH_SIZE]
 
@@ -59,7 +59,7 @@ optional arguments:
   --epochs EPOCHS
   --batch_size BATCH_SIZE
 
-'''
+```
 
 *Note: DetectoRS requires semantic masks along with instance masks during training , hence the arguments - train_seg_prefix and val_seg_prefix*
 
@@ -67,7 +67,7 @@ optional arguments:
 
 The following flags need to be used while running DetectoRS_inference.py:
 
-'''bash
+```bash
 
 usage: DetectoRS_inference.py [-h] --backbone {Original,Effb5,Transformer_Effb5} --saved_model_path SAVED_MODEL_PATH --input_images_folder INPUT_IMAGES_FOLDER --save_path SAVE_PATH
 
@@ -82,7 +82,7 @@ optional arguments:
   --save_path SAVE_PATH
                         path to the folder where the generated masks will be saved
 
-'''
+```
 
 ## Citation
  
