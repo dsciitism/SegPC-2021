@@ -20,7 +20,7 @@ To clone this repository:
 
 Installation of required packages:
 
-``` $ pip install -r CMRCNN_X152/requirements.txt ```
+``` $ pip install -r Cascade_Mask_RCNN_X152/requirements.txt ```
 
 
 
