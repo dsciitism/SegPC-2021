@@ -276,7 +276,7 @@ cfg.DATASETS.TEST = ("SegPC_val",)
 cfg.DATALOADER.NUM_WORKERS = 4
 cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("Misc/cascade_mask_rcnn_X_152_32x8d_FPN_IN5k_gn_dconv.yaml")  
 cfg.SOLVER.IMS_PER_BATCH = args.batch_size
-cfg.SOLVER.BASE_LR = 0.01
+cfg.SOLVER.BASE_LR = 0.02/8
 cfg.SOLVER.LR_SCHEDULER_NAME = 'WarmupCosineLR'
 
 cfg.SOLVER.WARMUP_ITERS = 1500
