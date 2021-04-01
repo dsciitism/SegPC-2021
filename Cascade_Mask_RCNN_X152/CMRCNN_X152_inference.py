@@ -276,6 +276,8 @@ names = os.listdir(img_root)
 thresh = 0
 var= 1
 
+res_size=(1080,1440)
+
 for name in names:
     print(var)
     var+=1
@@ -283,6 +285,9 @@ for name in names:
     index = name[:-4]
     
     im = cv2.imread(img_root+name)
+    orig_shape = im.shape[0:2]
+    im = cv2.resize(im, res_size[::-1],interpolation=cv2.INTER_NEAREST)
+
     outputs = predictor(im)
     scores = outputs['instances'].to('cpu').scores.numpy()
     pred_masks = outputs['instances'].to('cpu').pred_masks.numpy()
@@ -293,7 +298,7 @@ for name in names:
            tmp_mask = pred_masks[i].astype('uint8')
           
            tmp_mask = 255*tmp_mask
-          
+           tmp_mask = cv2.resize(tmp_mask, orig_shape[::-1],interpolation=cv2.INTER_NEAREST)
            cv2.imwrite(pred_root+index+'_'+str(count)+'.bmp', tmp_mask)
            count+=1
     if count==1:

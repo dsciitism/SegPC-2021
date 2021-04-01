@@ -245,15 +245,20 @@ from mmdet.apis import inference_detector, init_detector, show_result_pyplot
 import os
 from tqdm import tqdm
 import glob
+import cv2
 
 test_root = args.input_images_folder
 test_ids = os.listdir(test_root)
 model.cfg = cfg
 
+res_size=(1080,1440)
+
 for it in tqdm(range(len(test_ids))):
   id = test_ids[it]
   image = mmcv.imread(test_root+"/"+id)
-  
+  orig_shape = image.shape[0:2]
+  image = cv2.resize(image, res_size[::-1],interpolation=cv2.INTER_NEAREST)
+
   result = inference_detector(model,image)
   count = 1
   
@@ -262,5 +267,6 @@ for it in tqdm(range(len(test_ids))):
   for i,mask in enumerate(result[1][0]):
     if mask.sum()<500:
       continue
+    mask = cv2.resize(mask, orig_shape[::-1],interpolation=cv2.INTER_NEAREST)
     img.imsave(args.save_path+"/"+id[:-4]+"_{}".format(count)+".bmp",mask)
     count+=1
