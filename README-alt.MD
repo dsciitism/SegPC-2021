@@ -4,19 +4,15 @@ This is the official repository for the ISBI 2021 paper __Transformer Assisted C
 
 ## Getting Started
 We recommend using Python 3.7 for running the scripts in this repository. The necessary packages can be installed using _requirements.txt_ in the respective folders. Since all of our work has been done on Google Colaboratory, the _requirements.txt_ may have more packages/modules than is actually required and it might take quite long to install everything. Hence,for such a case, the folders of both the models also contain an _essential-requirements.txt_ file which contains some essential packages that need to installed beforehand, while the other fundamental packages can be installed later as their need shows up as an error when running the given training and inference scripts.
-
-To clone this repository:
-
- ``` $ git clone https://github.com/dsciitism/SegPC-2021```
  
- 
- ### To run this repository, following the given steps using the sections mentioned in the subsequent sections:
+### To run this repository, following the given steps using the sections mentioned in the subsequent sections:
  1) Prepare the data in COCO format
+
  2) Run the training script for Cascade Mask RCNN / DetectoRS
+
  3) Run the inference script for Cascade Mask RCNN / DetectoRS
+ 
  4) Run the ensemble script
-
-
 
 ## Data Preparation
 
@@ -167,7 +163,9 @@ arguments:
 Apart from the individual models, the paper also presents the scores of ensemble of any three models. The ensemble.py script in the utils folder can be used for making ensemble of the outputs of three models , using the following flags : 
 
 ```bash 
-usage: ensemble.py [-h] --model1_predictions MODEL1_PREDICTIONS --model2_predictions MODEL2_PREDICTIONS --model3_predictions MODEL3_PREDICTIONS --final_predictions FINAL_PREDICTIONS
+usage: ensemble.py [-h] --model1_predictions MODEL1_PREDICTIONS 
+--model2_predictions MODEL2_PREDICTIONS --model3_predictions MODEL3_PREDICTIONS 
+--final_predictions FINAL_PREDICTIONS
 
 arguments:
   -h, --help            show this help message and exit
@@ -183,13 +181,13 @@ arguments:
 
 ## Results and Models
 
-| Method | Backbone | mIoU | Download |
-|:------:|:--------:|:----:|:---------|
-|Cascade Mask R-CNN|Original(ResNet)|0.9179|[model](https://drive.google.com/file/d/1-52LoVxRulBb3sIOLv5gfKav2TbjaCqT/view?usp=sharing)|
-|DetectoRS|Original(ResNet)|0.9219|[model](https://drive.google.com/file/d/1-aNs6wUfVb4DDJL_9iGBSSzHds-m3sFu/view?usp=sharing)|
-|Cascade Mask R-CNN|EfficientNet-b5|0.8793|[model](https://drive.google.com/file/d/1-SzhcF3n7Wphzk6DmhmRV9Pf4MifkOY5/view?usp=sharing)|
-|DetectoRS|EfficientNet-b5|0.9038|[model](https://drive.google.com/file/d/1-HIxd5BpxByd_7bpnXqsMNuCGejL1Jz-/view?usp=sharing)|
-|Cascade Mask R-CNN|EfficientNet-b5+ViT|0.9281|[model](https://drive.google.com/file/d/1-Kf7PXs__z_UNDZpcxSllGj3k9B7FJrN/view?usp=sharing)|
-|DetectoRS|EfficientNet-b5+ViT|0.9273|[model](https://drive.google.com/file/d/1-TjCw3UN2OdmcvTzbTKPRwxtNKSKSHZY/view?usp=sharing)|
+| Method | Backbone | Download |
+|:------:|:--------:|:---------|
+|Cascade Mask R-CNN|Original(ResNet)|[model](https://drive.google.com/file/d/1-52LoVxRulBb3sIOLv5gfKav2TbjaCqT/view?usp=sharing)|
+|DetectoRS|Original(ResNet)|[model](https://drive.google.com/file/d/1-aNs6wUfVb4DDJL_9iGBSSzHds-m3sFu/view?usp=sharing)|
+|Cascade Mask R-CNN|EfficientNet-b5|[model](https://drive.google.com/file/d/1-SzhcF3n7Wphzk6DmhmRV9Pf4MifkOY5/view?usp=sharing)|
+|DetectoRS|EfficientNet-b5|[model](https://drive.google.com/file/d/1-HIxd5BpxByd_7bpnXqsMNuCGejL1Jz-/view?usp=sharing)|
+|Cascade Mask R-CNN|EfficientNet-b5+ViT|[model](https://drive.google.com/file/d/1-Kf7PXs__z_UNDZpcxSllGj3k9B7FJrN/view?usp=sharing)|
+|DetectoRS|EfficientNet-b5+ViT|[model](https://drive.google.com/file/d/1-TjCw3UN2OdmcvTzbTKPRwxtNKSKSHZY/view?usp=sharing)|
 
  

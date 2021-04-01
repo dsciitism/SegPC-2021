@@ -1,0 +1,7 @@
+# The following commands represent some essential installs in case requirements.txt is taking very long to complete. Remember that you need to install some other fundamental modules/packages as the need comes up while running any of the scripts.
+
+pip install pyyaml==5.1
+python -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/torch1.8/index.html
+pip install timm
+pip install segmentation-models-pytorch
+pip install einops

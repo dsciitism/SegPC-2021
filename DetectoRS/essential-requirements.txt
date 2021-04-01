@@ -1,0 +1,5 @@
+# The following commands represent some essential installs in case requirements.txt is taking very long to complete. Remember that you need to install some other fundamental modules/packages as the need comes up while running any of the scripts.
+
+pip install segmentation_models_pytorch
+pip install timm
+pip install einops

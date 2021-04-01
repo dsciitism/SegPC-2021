@@ -11,7 +11,7 @@ args = args.parse_args()
 import os
 
 if not os.path.exists("mmdetection/"):
-    raise Exception("inference script is not in the same directory where mmdetection_preparation.sh was run")
+    raise Exception("Inference script is not in the same directory where mmdetection_preparation.sh was run.This inference script should be run in the same folder where mmdetection_preparation.sh is run.")
 else :
     os.chdir("mmdetection/")
 

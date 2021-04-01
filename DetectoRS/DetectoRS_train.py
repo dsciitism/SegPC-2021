@@ -19,7 +19,7 @@ args = args.parse_args()
 import os
 
 if not os.path.exists("mmdetection/"):
-    raise Exception("training script is not in the same directory where mmdetection_preparation.sh was run")
+    raise Exception("Training script is not in the same directory where mmdetection_preparation.sh was run.This training script should be run in the same folder where mmdetection_preparation.sh is run.")
 else :
     os.chdir("mmdetection/")
 
