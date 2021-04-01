@@ -10,11 +10,11 @@ To clone this repository:
  ``` $ git clone https://github.com/dsciitism/SegPC-2021```
  
  
- ### To run this repository, follow the steps mentioned in:
- 1) Data Preparation section
- 2) Train section of Cascade Mask RCNN / DetectoRS
- 3) Inference section of Cascade Mask RCNN / DetectoRS
- 4) Ensemble section
+ ### To run this repository, following the given steps using the sections mentioned later:
+ 1) Prepare the data in COCO format
+ 2) Run the training script for Cascade Mask RCNN / DetectoRS
+ 3) Run the inference script for Cascade Mask RCNN / DetectoRS
+ 4) Run the ensemble script
 
 
 
