@@ -40,7 +40,7 @@ optional arguments:
 
 For installation of required packages:
 
-``` $ pip install -r Cascade_Mask_RCNN_X152/requirements.txt ```
+``` $ cat Cascade_Mask_RCNN_X152/requirements.txt | xargs -n 1 pip3 install ```
 
 ### Train
 
@@ -96,7 +96,7 @@ Preparation script should be run with the following command before running any o
 
 For installation of required packages:
 
-``` $ pip install -r DetectoRS/requirements.txt ```
+``` $ cat DetectoRS/requirements.txt | xargs -n 1 pip3 install ```
 
 ### Train
 
