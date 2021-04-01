@@ -8,6 +8,15 @@ We recommend using Python 3.7 for running the scripts in this repository. The ne
 To clone this repository:
 
  ``` $ git clone https://github.com/dsciitism/SegPC-2021```
+ 
+ 
+ ### To run this repository, follow the steps mentioned in:
+ 1) Data Preparation section
+ 2) Train section of Cascade Mask RCNN / DetectoRS
+ 3) Inference section of Cascade Mask RCNN / DetectoRS
+ 4) Ensemble section
+
+
 
 ## Data Preparation
 
