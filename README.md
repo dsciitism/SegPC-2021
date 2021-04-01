@@ -146,5 +146,34 @@ optional arguments:
 
 ```
 
- 
+## Ensemble
+
+Apart from the individual models, the paper also presents the scores of ensemble of any three models. The ensemble.py script in the utils folder can be used for making ensemble of the outputs of three models , using the following flags : 
+
+```bash 
+usage: ensemble.py [-h] --model1_predictions MODEL1_PREDICTIONS --model2_predictions MODEL2_PREDICTIONS --model3_predictions MODEL3_PREDICTIONS --final_predictions FINAL_PREDICTIONS
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --model1_predictions MODEL1_PREDICTIONS
+                        path to the predictions of first model
+  --model2_predictions MODEL2_PREDICTIONS
+                        path to the predictions of second model
+  --model3_predictions MODEL3_PREDICTIONS
+                        path to the predictions of third model
+  --final_predictions FINAL_PREDICTIONS
+                        path where the ensembled outputs should be saved
+```
+
+## Results and Models
+
+| Method | Backbone | mIoU | Download |
+|:------:|:--------:|:----:|:---------|
+|Cascade Mask R-CNN|Original(ResNet)|0.9281|[model]()|
+|DetectoRS|Original(ResNet)|0.9219|[model]()|
+|Cascade Mask R-CNN|EfficientNet-b5|0.8793|[model]()|
+|DetectoRS|EfficientNet-b5|0.9038|[model]()|
+|Cascade Mask R-CNN|EfficientNet-b5+ViT|0.9179|[model]()|
+|DetectoRS|EfficientNet-b5+ViT|0.9273|[model]()|
+
  
