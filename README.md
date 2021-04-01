@@ -169,11 +169,11 @@ optional arguments:
 
 | Method | Backbone | mIoU | Download |
 |:------:|:--------:|:----:|:---------|
-|Cascade Mask R-CNN|Original(ResNet)|0.9281|[model]()|
+|Cascade Mask R-CNN|Original(ResNet)|0.9179|[model]()|
 |DetectoRS|Original(ResNet)|0.9219|[model]()|
 |Cascade Mask R-CNN|EfficientNet-b5|0.8793|[model]()|
 |DetectoRS|EfficientNet-b5|0.9038|[model]()|
-|Cascade Mask R-CNN|EfficientNet-b5+ViT|0.9179|[model]()|
+|Cascade Mask R-CNN|EfficientNet-b5+ViT|0.9281|[model]()|
 |DetectoRS|EfficientNet-b5+ViT|0.9273|[model]()|
 
  
