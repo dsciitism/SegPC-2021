@@ -1,3 +1,12 @@
+import argparse
+
+args = argparse.ArgumentParser()
+args.add_argument('--img_root',type=str,required=True,help="path to the folder where the images are saved")
+args.add_argument('--mask_root',type=str,required=True,help="path to the folder where gt instances are saved")
+args.add_argument('--dest_root',type=str,required=True,help="path to the folder where the COCO format json file and resized masks and images will be saved")
+
+args = args.parse_args()
+
 import glob
 import os
 import albumentations as albu
@@ -9,14 +18,6 @@ import matplotlib.image as img
 import json
 import argparse
 import numpy as np
-
-
-args = argparse.ArgumentParser()
-args.add_argument('--img_root',type=str,required=True,help="path to the folder where the images are saved")
-args.add_argument('--mask_root',type=str,required=True,help="path to the folder where gt instances are saved")
-args.add_argument('--dest_root',type=str,required=True,help="path to the folder where the COCO format json file and resized masks and images will be saved")
-
-args = args.parse_args()
 
 
 inf = {

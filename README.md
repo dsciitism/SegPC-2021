@@ -9,6 +9,23 @@ To clone this repository:
 
  ``` $ git clone https://github.com/dsciitism/SegPC-2021```
 
+## Data Preparation
+
+*Note : This step is not required for inference.*
+
+All the models present in the paper require data in COCO format to train. Hence , to train the models the images and masks need to be resized and a json file in COCO format is required. The dataset_preparation.py script in the utils folder can be used to perform these tasks. The following flags need to be used for running the dataset_preparation.py script:
+
+```bash
+usage: dataset_preparation.py [-h] --img_root IMG_ROOT --mask_root MASK_ROOT --dest_root DEST_ROOT
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --img_root IMG_ROOT   path to the folder where the images are saved
+  --mask_root MASK_ROOT
+                        path to the folder where gt instances are saved
+  --dest_root DEST_ROOT
+                        path to the folder where the COCO format json file and resized masks and images will be saved
+```
  
 ## Cascade Mask RCNN 
 
@@ -61,9 +78,6 @@ optional arguments:
                         path to the folder where the generated masks will be
                         saved
 ```
-
-
-
 
 ## DetectoRS
 
