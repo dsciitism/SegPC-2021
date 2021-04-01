@@ -21,13 +21,7 @@ For installation of required packages:
 The following flags need to be used to run CMRCNN_X152_train.py:
 
 ```
-usage: CMRCNN_X152_train.py [-h] --backbone {Original,Effb5,Transformer_Effb5}
-                            --train_data_root TRAIN_DATA_ROOT
-                            --training_json_path TRAINING_JSON_PATH
-                            --val_data_root VAL_DATA_ROOT
-                            --validation_json_path VALIDATION_JSON_PATH
-                            --work_dir WORK_DIR [--iterations ITERATIONS]
-                            [--batch_size BATCH_SIZE]
+usage: CMRCNN_X152_train.py [-h] --backbone {Original,Effb5,Transformer_Effb5} --train_data_root TRAIN_DATA_ROOT --training_json_path TRAINING_JSON_PATH --val_data_root VAL_DATA_ROOT --validation_json_path VALIDATION_JSON_PATH --work_dir WORK_DIR [--iterations ITERATIONS] [--batch_size BATCH_SIZE]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -52,11 +46,7 @@ optional arguments:
 The following flags need to be used while running CMRCNN_X152_inference.py:
 
 ```
-usage: CMRCNN_X152_inference.py [-h] --backbone
-                                {Original,Effb5,Transformer_Effb5}
-                                --saved_model_path SAVED_MODEL_PATH
-                                --input_images_folder INPUT_IMAGES_FOLDER
-                                --save_path SAVE_PATH
+usage: CMRCNN_X152_inference.py [-h] --backbone {Original,Effb5,Transformer_Effb5} --saved_model_path SAVED_MODEL_PATH --input_images_folder INPUT_IMAGES_FOLDER --save_path SAVE_PATH
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -83,7 +73,7 @@ Preparation script should be run with the following command before running any o
 
 For installation of required packages:
 
-``` $ pip install -r DetectorRS/requirements.txt ```
+``` $ pip install -r DetectoRS/requirements.txt ```
 
 ### Train
 
