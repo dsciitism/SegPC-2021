@@ -16,6 +16,64 @@ For installation of required packages:
 
 ``` $ pip install -r Cascade_Mask_RCNN_X152/requirements.txt ```
 
+### Train
+
+The following flags need to be used to run CMRCNN_X152_train.py:
+
+```
+usage: CMRCNN_X152_train.py [-h] --backbone {Original,Effb5,Transformer_Effb5}
+                            --train_data_root TRAIN_DATA_ROOT
+                            --training_json_path TRAINING_JSON_PATH
+                            --val_data_root VAL_DATA_ROOT
+                            --validation_json_path VALIDATION_JSON_PATH
+                            --work_dir WORK_DIR [--iterations ITERATIONS]
+                            [--batch_size BATCH_SIZE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --backbone {Original,Effb5,Transformer_Effb5}
+                        The backbone to be used from the given choices
+  --train_data_root TRAIN_DATA_ROOT
+                        path to training data root folder
+  --training_json_path TRAINING_JSON_PATH
+                        path to the training json file in COCO format
+  --val_data_root VAL_DATA_ROOT
+                        path to validation data root folder
+  --validation_json_path VALIDATION_JSON_PATH
+                        path to validation json file in COCO format
+  --work_dir WORK_DIR   path to the folder where models and logs will be saved
+  --iterations ITERATIONS
+  --batch_size BATCH_SIZE
+
+```
+
+### Inference 
+
+The following flags need to be used while running CMRCNN_X152_inference.py:
+
+```
+usage: CMRCNN_X152_inference.py [-h] --backbone
+                                {Original,Effb5,Transformer_Effb5}
+                                --saved_model_path SAVED_MODEL_PATH
+                                --input_images_folder INPUT_IMAGES_FOLDER
+                                --save_path SAVE_PATH
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --backbone {Original,Effb5,Transformer_Effb5}
+                        The backbone to be used from the given choices
+  --saved_model_path SAVED_MODEL_PATH
+                        path to the saved model which will be loaded
+  --input_images_folder INPUT_IMAGES_FOLDER
+                        path to the folder where images to inference on are
+                        kept
+  --save_path SAVE_PATH
+                        path to the folder where the generated masks will be
+                        saved
+```
+
+
+
 
 ## DetectoRS
 
