@@ -2,6 +2,23 @@
 
 This is the official repository for the ISBI 2021 paper __Transformer Assisted Convolutional Neural Network for Cell Instance Segmentation__ by Deepanshu Pandey, Pradyumna Gupta, Sumit Bhattacharya, Aman Sinha, Rohit Agarwal.
 
+# About the Challenge
+**Website link:** https://segpc-2021.grand-challenge.org/SegPC-2021/
+
+**Overview:** In recent years, with the advancement of Deep Learning, there has been tremendous efforts in the application of image processing to build AI based models for cancer diagnosis. This challenge is also one such effort. It deals with the segmentation of plasma cell cancer, namely, Multiple Myeloma (MM), which is a type of blood cancer. We are provided with the stained color normalization imag of the cells.
+
+**Image distribution:** The cells may have different structures because:
+* There is a varying amount of nucleus and cytoplasm from one cell to another.
+* The cells may appear in clusters or as isolated single cells.
+* The cells appearing in clusters may have three cases - 
+  * Cytoplasm of two cells touch each other,
+  * The cytoplasm of one cell and nucleus of another touch each other,
+  * nucleus of cells touch each other. 
+  Since the cytoplasm and nucleus have different colors, the segmentation of cells may pose challenges.
+* There may be multiple cells touching each other in the cluster.
+* There may be unstained cells, say a red blood cell underneath the cell of interest, changing its color and shade.
+* The cytoplasm of a cell may be close to the background of the whole image, making it difficult to identify the boundary of the cell and segment it.
+
 ## Getting Started
 We recommend using Python 3.7 for running the scripts in this repository. The necessary packages can be installed using _requirements.txt_ in the respective folders. Since all of our work has been done on Google Colaboratory, the _requirements.txt_ may have more packages/modules than is actually required and it might take quite long to install everything. Hence,for such a case, the folders of both the models also contain an _essential-requirements.txt_ file which contains some essential packages that need to installed beforehand, while the other fundamental packages can be installed later as their need shows up as an error when running the given training and inference scripts.
 
